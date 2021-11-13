@@ -119,7 +119,17 @@ int main(int argc, char *argv[])
                 run = false;
                 break;
             case 8:
-                reverse(lists[0]);
+                for (i = 0; i < SIZE; ++i)
+                {
+                    reverse(lists[25 - i]);
+                    NODE *t = lists[25 - i];
+                    while (t != NULL) //While node is not null
+                    {
+                        printf("%s\t%s\n", t->name, t->number); //Prints the name and number of one node
+                        t = t->next; //Contiues to the next node
+                    }
+                    reverse(lists[25 - i]);
+                }
                 break;
             default: //If any number other than 1-8 is inputted
                 printf("Not a valid option. Try again.\n");
@@ -480,15 +490,27 @@ void reverse(NODE *c)
         printf("Malloc error...\n"); //Error given if pointers not allocated successfully
         exit(1);
     }
-
+    
     if (c == NULL)
-        return;
+            return;
+
+    int letterIndex;
+    
+    if ((int)(*c->name) >= 65 && (int)(*c->name) <= 90)
+    {
+        letterIndex = (int)(*c->name) - 65;
+    }
+
+    else if ((int)(*c->name) >= 97 && (int)(*c->name) <= 122)
+    {
+        letterIndex = (int)(*c->name) - 97;
+    }
     
     if (c->next == NULL) //If tail
     {
         c->next = c->prev;
         c->prev = NULL;
-        lists[0] = c;
+        lists[letterIndex] = c;
     }
 
     else
@@ -498,5 +520,4 @@ void reverse(NODE *c)
         c->next = temp->prev;
         reverse(c->prev);
     }
-    
 }
