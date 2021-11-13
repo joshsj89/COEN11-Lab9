@@ -59,6 +59,7 @@ void read_file(char *name); //Function declaration of Read File
 void save_file(char *name); //Function declaration of Save File
 void read_binary(char *name); //Function declaration of Read Binary File
 void save_binary(char *name); //Function declaration of Save Binary File
+void reverse(NODE *c); //Fuction declaration of Reverse
 
 /*
 *****************************************************************
@@ -92,7 +93,7 @@ int main(int argc, char *argv[])
     while(run)
     {
         printf("Options: 1. ADD PEOPLE\t2. DELETE PEOPLE\t3. SHOW ALL\t4. SHOW CORRESPONDING\t5. SAVE TO BINARY FILE\t6. READ BINARY FILE\t7. QUIT\nEnter Number: ");
-        scanf("%d", &command); //User inputs 1-7
+        scanf("%d", &command); //User inputs 1-8
 
         switch (command)
         {
@@ -117,7 +118,10 @@ int main(int argc, char *argv[])
             case 7: //Quit
                 run = false;
                 break;
-            default: //If any number other than 1-7 is inputted
+            case 8:
+                reverse(lists[0]);
+                break;
+            default: //If any number other than 1-8 is inputted
                 printf("Not a valid option. Try again.\n");
                 break;
         }
@@ -466,4 +470,33 @@ void save_binary(char *name) //Save Binary File function
     }
 
     fclose(fp); //Closes file pointer
+}
+
+void reverse(NODE *c)
+{
+    NODE *temp;
+    if ((temp = (NODE *)malloc(sizeof(NODE))) == NULL)
+    {//Allocate pointers
+        printf("Malloc error...\n"); //Error given if pointers not allocated successfully
+        exit(1);
+    }
+
+    if (c == NULL)
+        return;
+    
+    if (c->next == NULL) //If tail
+    {
+        c->next = c->prev;
+        c->prev = NULL;
+        lists[0] = c;
+    }
+
+    else
+    {
+        temp->prev = c->prev;
+        c->prev = c->next;
+        c->next = temp->prev;
+        reverse(c->prev);
+    }
+    
 }
