@@ -46,7 +46,6 @@ void reverse(NODE *c); //Fuction declaration of Reverse
 
 int main(int argc, char *argv[])
 {
-
     int i;
     for (i = 0; i < SIZE; ++i)
     {
@@ -117,4 +116,3 @@ int main(int argc, char *argv[])
     
     free(lists[i-1]); //Deallocates the linked list
 }
-
