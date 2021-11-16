@@ -16,25 +16,9 @@
 #define NODE struct contact
 #define SIZE 26
 
+NODE *lists[SIZE]; //Array of linked lists
+NODE *listsTail[SIZE]; //Array of linked lists' tails
 char *fileHeader = "Names\tNumbers\t\n\n----------------------------------\n\n"; //Header of the text file
-
-/*
-*****************************************************************
-*
-*       function declarations
-*
-*****************************************************************
-*/
-
-void insert(); //Function declaration of Insert
-void delete(); //Function declaration of Delete
-void show(); //Function declaration of Show All
-void show_letter(); //Function declaration of Show Corresponding
-void read_file(char *name); //Function declaration of Read File
-void save_file(char *name); //Function declaration of Save File
-void read_binary(char *name); //Function declaration of Read Binary File
-void save_binary(char *name); //Function declaration of Save Binary File
-void reverse(NODE *c); //Fuction declaration of Reverse
 
 /*
 *****************************************************************
