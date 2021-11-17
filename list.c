@@ -240,7 +240,7 @@ void show_letter() //Show Corresponding function
     }
 }
 
-void reverse(NODE *p, int index)
+void reverse(NODE *p, int index) //Reverse function
 {
     NODE *temp;
     if ((temp = (NODE *)malloc(sizeof(NODE))) == NULL)
@@ -249,16 +249,16 @@ void reverse(NODE *p, int index)
         exit(1);
     }
     
-    if (p == NULL) 
+    if (p == NULL) //If there are no nodes (Base case)
             return;
 
-    else
-    {
-        temp = p->prev;
-        p->prev = p->next;
+    else //If there are any nodes
+    {//Switch prev and next pointers
+        temp = p->prev; 
+        p->prev = p->next; 
         p->next = temp;
-        reverse(p->prev, index);
-        if (p->prev == NULL)
-            lists[index] = p;
+        reverse(p->prev, index); //Continue to next node
+        if (p->prev == NULL) //If the last node has been reached
+            lists[index] = p; //then that last node will become the head
     }
 }
