@@ -79,14 +79,14 @@ int main(int argc, char *argv[])
             case 8:
                 for (i = 0; i < SIZE; ++i)
                 {
-                    reverse(lists[25 - i]);
+                    reverse(lists[25 - i], (25 - i));
                     NODE *t = lists[25 - i];
                     while (t != NULL) //While node is not null
                     {
                         printf("%s\t%s\n", t->name, t->number); //Prints the name and number of one node
                         t = t->next; //Contiues to the next node
                     }
-                    reverse(lists[25 - i]);
+                    reverse(lists[25 - i], (25 - i));
                 }
                 break;
             default: //If any number other than 1-8 is inputted

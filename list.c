@@ -240,7 +240,7 @@ void show_letter() //Show Corresponding function
     }
 }
 
-void reverse(NODE *c)
+void reverse(NODE *p, int index)
 {
     NODE *temp;
     if ((temp = (NODE *)malloc(sizeof(NODE))) == NULL)
@@ -249,33 +249,16 @@ void reverse(NODE *c)
         exit(1);
     }
     
-    if (c == NULL)
+    if (p == NULL) 
             return;
-
-    int letterIndex;
-    
-    if ((int)(*c->name) >= 65 && (int)(*c->name) <= 90)
-    {
-        letterIndex = (int)(*c->name) - 65;
-    }
-
-    else if ((int)(*c->name) >= 97 && (int)(*c->name) <= 122)
-    {
-        letterIndex = (int)(*c->name) - 97;
-    }
-    
-    if (c->next == NULL) //If tail
-    {
-        c->next = c->prev;
-        c->prev = NULL;
-        lists[letterIndex] = c;
-    }
 
     else
     {
-        temp->prev = c->prev;
-        c->prev = c->next;
-        c->next = temp->prev;
-        reverse(c->prev);
+        temp = p->prev;
+        p->prev = p->next;
+        p->next = temp;
+        reverse(p->prev, index);
+        if (p->prev == NULL)
+            lists[index] = p;
     }
 }
