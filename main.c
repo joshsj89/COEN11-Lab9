@@ -50,7 +50,9 @@ int main(int argc, char *argv[])
 
     while(run)
     {
-        printf("Options: 1. ADD PEOPLE\t2. DELETE PEOPLE\t3. SHOW ALL\t4. SHOW CORRESPONDING\t5. SAVE TO BINARY FILE\t6. READ BINARY FILE\t7. QUIT\nEnter Number: ");
+        printf("Options: 1. ADD PEOPLE   2. DELETE PEOPLE   3. SHOW ALL   "
+            "4. SHOW CORRESPONDING   5. SAVE TO BINARY FILE   6. READ BINARY FILE   "
+            "7. REVERSE LIST   8. QUIT\nEnter Number: ");
         scanf("%d", &command); //User inputs 1-8
 
         switch (command)
@@ -73,10 +75,7 @@ int main(int argc, char *argv[])
             case 6: //Read from binary file
                 read_binary(argv[2]);
                 break;
-            case 7: //Quit
-                run = false;
-                break;
-            case 8:
+            case 7:
                 for (i = 0; i < SIZE; ++i)
                 {
                     reverse(lists[25 - i], (25 - i)); //Reverses linked lists
@@ -88,6 +87,9 @@ int main(int argc, char *argv[])
                     }
                     reverse(lists[25 - i], (25 - i)); //Reverses linked lists again so they're back in alphabetical order
                 }
+                break;
+            case 8: //Quit
+                run = false;
                 break;
             default: //If any number other than 1-8 is inputted
                 printf("Not a valid option. Try again.\n");
